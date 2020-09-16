@@ -1,0 +1,206 @@
+---
+title: "Image recognition Analysis in R and Python"
+author: "AbbaTek"
+date: "21/05/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+# Here we load the necessary librarries in R 
+```{r}
+library(tidyverse) # If you don't have then install.packages("$package.name") will                          #install them
+library(reticulate)
+library(tensorflow)
+
+# R
+install_tensorflow(
+    method               = "conda", 
+    version              = "default", # Installs TF 2.0.0 (as of May 15, 2020)
+    envname              = "py3.6", 
+    conda_python_version = "3.6", 
+    extra_packages       = c("matplotlib", "numpy", "pandas", "scikit-learn")
+)
+conda_list()
+use_condaenv("py3.6", required = TRUE)
+#py_config()
+```
+
+# Next, run install_tensorflow() in your R environment and load some more libraries. This will take about 3-5 minutes to install TensorFlow in a new Conda Environment named “py3.6”.
+
+Load necessary python libraries (note this chunk of code is in python):
+
+```{python}
+# TensorFlow and tf.keras
+import tensorflow as tf
+from tensorflow import keras
+
+# Helper libraries
+import numpy as np
+import matplotlib.pyplot as plt
+
+#check version of tensorflow to be 2.0+
+print(tf.__version__)
+```
+
+Note that adding `echo = FALSE` parameter to the code chunk will prevent printing of the R code that generated a plot.
+
+# Load the fashion_mnist dataset from keras.
+We have 60,000 training images that have been labeled.
+
+```{python}
+fashion_mnist = keras.datasets.fashion_mnist
+
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+train_images.shape
+```
+
+We can check the unique labels to see what classifications the images belong to. Note that these are numeric values ranging from 0 to 9.
+
+```{python}
+np.unique(train_labels)
+```
+
+The corresponding labels are:
+
+```{python}
+class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
+               'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
+```
+
+We can see what the first image looks like using matplotlib.
+
+```{python}
+plt.figure()
+plt.imshow(train_images[0])
+plt.colorbar()
+plt.grid(False)
+plt.show()
+```
+
+And we can also check out the first 25 images.
+
+```{python}
+plt.figure(figsize=(10,10))
+for i in range(25):
+    plt.subplot(5,5,i+1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(train_images[i], cmap=plt.cm.binary)
+    plt.xlabel(class_names[train_labels[i]])
+plt.show()
+```
+
+# Make a keras model using the Sequential() with 3 steps: Flatten, Dense, and Dense.
+
+```{python}
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(10)
+])
+```
+
+Next, compile the model with the “adam” optimizer.
+
+```{python}
+model.compile(
+    optimizer = 'adam',
+    loss      = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    metrics   = ['accuracy']
+)
+```
+
+Inspect the model summary.
+
+```{python}
+model.summary()
+```
+
+# Fit the keras model
+
+```{python}
+model.fit(train_images, train_labels, epochs=10, verbose=1)
+```
+
+# We can get the training history
+
+```{python}
+history = model.history.history
+history
+```
+
+We can visualize the training history 
+
+```{r}
+py$history %>% 
+    as_tibble() %>%
+    unnest(loss, accuracy) %>%
+    rowid_to_column() %>%
+    pivot_longer(-rowid) %>%
+    ggplot(aes(rowid, value, color = name)) +
+    geom_line() +
+    geom_point() +
+    labs(title = "Training Accuracy")
+```
+# Test Accuracy
+Evaluate accuracy on the out-of-sample images.
+
+```{python}
+test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+```
+
+# Make Predicitons
+The model produces linear outputs cakked “logits”. The softmax layer to converts the logits to probabilities.
+
+```{python}
+probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+```
+
+We can then classify all of the test images (held out)
+
+```{python}
+predictions = probability_model.predict(test_images)
+```
+
+We can make a prediction for the first image.
+
+```{python}
+predictions[0]
+```
+Use np.argmax() to determine which index has the highest probability.
+```{python}
+np.argmax(predictions[0])
+```
+The index value can be retrieved with np.max().
+```{python}
+np.max(predictions[0])
+```
+Get the class name.
+```{python}
+class_names[np.argmax(predictions[0])]
+```
+And visualize the image.
+```{python}
+plt.figure()
+plt.imshow(test_images[0])
+plt.colorbar()
+```
+
+```{python}
+plt.grid(False)
+plt.show()
+```
+
+
+
