@@ -5,7 +5,7 @@ Our inspiration emanated from [ASTC’s Community Science Initiative](https://ww
 
 # Polymer diversity in microplastics 
 In an article led by [Chelsea Rochman](https://doi.org/10.1002/etc.4371) rethinking microplastics as a diverse contaminant suite, they emphasized the need for a change of thought about microplastics being a single contaminant rather than a diverse suite of contaminants in order to design efficient monitoring protocols, methods of analysis, assessmen of toxicity, source and fate, including efficient communication strategies for policy makers. 
-![](https://github.com/arreyves/CompoundConnect/tree/master/img/polymer_diversity.jpg)
+![polymer diversity](https://github.com/arreyves/CompoundConnect/tree/master/img/polymer_diversity.jpg)
 Now, here comes **CompoundConnect!** 
 
 # CompoundConnect
