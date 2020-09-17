@@ -2,15 +2,15 @@
 ############ Cluster Analysis for the Raman Spec Data ###########################
 library(tidyverse)
 library(ggplot2)
-library(caret)
 library(tidymodels)
 library(workflows)
 library(tune)
 library(renv)
 library(plumber)
+library(keras)
 
-renv::init(force = TRUE)
-renv::snapshot()
+#renv::init()
+#renv::snapshot()
 # load the data 
 plastic_spec_orig <- read.csv('~/GitReps/Microplastics/CompoundConnect/Data/combined_plastic_spectra.csv')
 
@@ -106,7 +106,9 @@ test_predictions <- rf_fit %>% pull(.predictions)
 
 ## fitting and using the final model
 final_model <- fit(rf_workflow, plastic_spec)
-final_model
+
+## SAVE THE MODEL
+save_model_hdf5 (final_model, "model.h5")
 
 ## Variable importance can be extracted from the ranger object
 ranger_obj <- pull_workflow_fit(final_model)$fit
