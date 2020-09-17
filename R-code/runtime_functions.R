@@ -4,9 +4,9 @@ library(tidyverse)
 library(fs)
 
 
-#### Load multiple files from the Raman Spec Analysis
+#### Load new files from the Raman Spec Analysis
 
-file_paths <- fs::dir_ls('../Data')
+file_paths <- fs::dir_ls('~/Data')
 
 file_paths <- file_paths[1:7]
 
@@ -30,10 +30,11 @@ file_contents %>%
     print(x)
       }) -> tmp
 
-############ Create new Data frame for Testing
+############ Create new input data for the classification
 
 
-new_plastic_spec <- rename(tmp, Raman_shift = 'V1', Intensity = 'V2') %>% head()
+new_plastic_spec <- rename(tmp, Raman_shift = 'V1', Intensity = 'V2') 
+
 
 
 
