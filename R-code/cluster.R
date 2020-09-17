@@ -108,7 +108,8 @@ test_predictions <- rf_fit %>% pull(.predictions)
 final_model <- fit(rf_workflow, plastic_spec)
 
 ## SAVE THE MODEL
-save_model_hdf5 (final_model, "model.h5")
+save(final_model, file = 'final_model.RData')
+
 
 ## Variable importance can be extracted from the ranger object
 ranger_obj <- pull_workflow_fit(final_model)$fit
