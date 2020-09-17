@@ -8,4 +8,6 @@ Our inspiration emanated from [ASTC’s Community Science Initiative](https://ww
 This is an introductory repository of our proposed solution to help microplastic researchers, in that it provides an open access tool to match spectra with a library of polymers. At present, these libraries are mostly behind a paywall which can be difficult for researchers if they do not have the resources to purchase subscriptions.
 The full package of being able to collect characterization data on size, shape, color and plastic type in one package is unique! There is also a real need for tools that are specific to microplastics, and particularly those similar to what we find in nature. This tool seems very relevant to microplastic researchers.
 
-This code will be used in the 2020 Lake Winnipeg AquaHacking Challenge Final event on October 17 [here] (https://aquahacking.com/en/2020-winnipeg/)
+This code will be used in the 2020 Lake Winnipeg AquaHacking Challenge Final event on October 17 [here](https://aquahacking.com/en/2020-winnipeg/)
+
+# How to use this repository
