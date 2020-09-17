@@ -3,3 +3,9 @@
 .RData
 .Ruserdata
 R-code/*.R~
+R-code/AquahackApp.R
+R-code/Environment.R
+R-code/ImageRecognitionSample.Rmd
+R-code/classification.R
+R-code/helper.R
+R-code/select_fibers.R
