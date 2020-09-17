@@ -6,7 +6,11 @@ library(caret)
 library(tidymodels)
 library(workflows)
 library(tune)
+library(renv)
+library(plumber)
 
+renv::init(force = TRUE)
+renv::snapshot()
 # load the data 
 plastic_spec_orig <- read.csv('~/GitReps/Microplastics/CompoundConnect/Data/combined_plastic_spectra.csv')
 
