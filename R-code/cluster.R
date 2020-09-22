@@ -25,7 +25,7 @@ plastic_spec_orig <- read.csv('~/GitReps/Microplastics/CompoundConnect/Data/comb
 #     }
 
 # visual inspection
-plastic_spec %>% ggplot(aes(Raman_Shift, Intensity)) + geom_line(alpha=0.5) + facet_wrap(~Plastic_type)         
+#plastic_spec %>% ggplot(aes(Raman_Shift, Intensity)) + geom_line(alpha=0.5) + facet_wrap(~Plastic_type)         
 
 ## Split into train/test data set
 
@@ -107,12 +107,12 @@ test_predictions <- rf_fit %>% pull(.predictions)
 ## fitting and using the final model
 final_model <- fit(rf_workflow, plastic_spec)
 
-## SAVE THE MODEL
-save(final_model, file = 'final_model.RData')
-
-
 ## Variable importance can be extracted from the ranger object
 ranger_obj <- pull_workflow_fit(final_model)$fit
 ranger_obj
 
 ranger_obj$variable.importance
+
+## Save the workspace to retrieve the model
+save.image(file = 'final_model.RData')
+
