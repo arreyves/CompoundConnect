@@ -5,7 +5,7 @@
 # makr the model
 source('cluster.R')
 
-#* @get /spectral_data_frame & input_pair 
+#* @get /spectral_dataframe_&_input_pair 
 
 generate_input_pair <- function (x , input_pair){
   
