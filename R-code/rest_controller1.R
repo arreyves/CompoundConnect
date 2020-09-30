@@ -5,11 +5,13 @@
 # make the model
 #source('cluster.R')
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 #* @get /input_pair 
-=======
+#=======
 #* @get /spectral_dataframe_&_input_pair 
->>>>>>> 394bd2f6d6d7e33c59cc48490e4ff415d2c93cc1
+#>>>>>>> 394bd2f6d6d7e33c59cc48490e4ff415d2c93cc1
+
+
 
 generate_input_pair <- function (x , input_pair){
 
