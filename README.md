@@ -1,4 +1,12 @@
 # AbbaTek - *Where Ingenuity meets Passion*
+
+
+# About Us
+
+AbbaTek is a group of passionate individuals from diverse backgrounds who were brought together by their passion to save our precious freshwater resources.
+
+
+
 At [AbbaTek](https://abbatekgroup.com/), we are driven by Community Science initiatives whose main goal is to create that perfect harmony between science and communities. 
 
 Our inspiration emanated from [ASTC’s Community Science Initiative](https://www.astc.org/impact-initiatives/astcs-community-science-initiative/) who defined it as *connected or organized groups of people who share a common geography, jurisdiction, set of characteristics, or interests and goals. This increasingly popular method of collaboration gives science-engagement practitioners and scientists the opportunity to collaborate with community members to do science that advances community priorities* 
