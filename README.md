@@ -5,10 +5,10 @@ Our inspiration emanated from [ASTC’s Community Science Initiative](https://ww
 
 # Polymer diversity in microplastics 
 In an article led by [Chelsea Rochman](https://doi.org/10.1002/etc.4371) rethinking microplastics as a diverse contaminant suite, they emphasized the need for a change of thought about microplastics being a single contaminant rather than a diverse suite of contaminants in order to design efficient monitoring protocols, methods of analysis, assessmen of toxicity, source and fate, including efficient communication strategies for policy makers. 
-[![polymer diversity](img/polymer_diversity.png)](https://github.com/arreyves/CompoundConnect/tree/master/img/polymer_diversity.png)
-Now, here comes **CompoundConnect!** 
+[![polymer diversity](img/polymer_diversity.png)](https://github.com/arreyves/MPConnect/tree/master/img/polymer_diversity.png)
+Now, here comes **MPConnect!** 
 
-# CompoundConnect
+# MPConnect
 This is an introductory repository of our proposed solution to help microplastic researchers, in that it provides an open access tool to match spectra with a library of polymers. At present, these libraries are mostly behind a paywall which can be difficult for researchers if they do not have the resources to purchase subscriptions.
 The full package of being able to collect characterization data on size, shape, color and plastic type in one package is unique! There is also a real need for tools that are specific to microplastics, and particularly those similar to what we find in nature. This tool seems very relevant to microplastic researchers.
 
